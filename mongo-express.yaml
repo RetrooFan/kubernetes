@@ -1,6 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  namespace: default
   name: mongo-express-deployment
   labels:
     app: mongo-express
@@ -42,6 +43,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
+  namespace: default
   name: mongo-express-service
 spec:
   selector:
@@ -55,6 +57,7 @@ spec:
 apiVersion: v1
 kind: ConfigMap
 metadata:
+  namespace: default
   name: mongo-express-configmap
 data:
   basicauth_enabled: "true"
