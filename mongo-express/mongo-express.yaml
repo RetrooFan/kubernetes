@@ -61,6 +61,7 @@ metadata:
   name: mongo-express-ingress
   annotations:
     cert-manager.io/cluster-issuer: "letsencrypt"
+    traefik.ingress.kubernetes.io/router.middlewares: default-redirect-https@kubernetescrd
 spec:
   ingressClassName: traefik
   tls:
@@ -86,3 +87,13 @@ metadata:
   name: mongo-express-configmap
 data:
   basicauth_enabled: "true"
+---
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: redirect-https
+  namespace: default
+spec:
+  redirectScheme:
+    scheme: https
+    permanent: true
