@@ -59,7 +59,14 @@ kind: Ingress
 metadata:
   namespace: default
   name: mongo-express-ingress
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt"
 spec:
+  ingressClassName: traefik
+  tls:
+    - hosts:
+        - mongo-express.retroofan.dedyn.io
+      secretName: mongo-express-tls-cert
   rules:
     - host: mongo-express.retroofan.dedyn.io
       http:
