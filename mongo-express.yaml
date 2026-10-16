@@ -61,7 +61,7 @@ metadata:
   name: mongo-express-ingress
 spec:
   rules:
-    - host: mongo-express.com
+    - host: mongo-express.retroofan.dedyn.io
       http:
         paths:
           - path: /
